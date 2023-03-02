@@ -39,10 +39,10 @@ public class Main {
         int phraseCnt = 0;
         while (true) {
             System.out.print("명령) ");
-            String input = br.readLine();
-            if (input.equals("종료")) {
+            String func = br.readLine();
+            if (func.equals("종료")) {
                 break;
-            } else if (input.equals("등록")) {
+            } else if (func.equals("등록")) {
                 phraseCnt++;
                 System.out.print("명언 : ");
                 String sentence = br.readLine();
@@ -52,15 +52,18 @@ public class Main {
 
                 phrases.add(new Phrase(phraseCnt, writer, sentence));
                 System.out.println(phraseCnt + "번 명언이 등록되었습니다.");
-            } else if (input.equals("목록")) {
+            } else if (func.equals("목록")) {
                 System.out.println("번호 / 작가 / 명언");
                 System.out.println("----------------------");
                 for (int i = phrases.size() - 1; i >= 0; i--) {
                     Phrase phrase = phrases.get(i);
                     System.out.println(phrase.getNumber() + " / " + phrase.getWriter() + " / " + phrase.getSentence());
                 }
+            } else if (func.substring(0, 2).equals("삭제")) {
+                int deleteID = Integer.parseInt(func.substring(6));
+                phrases.remove(deleteID - 1);
+                System.out.println(deleteID + "번 명언이 삭제되었습니다.");
             }
-
         }
 
 
