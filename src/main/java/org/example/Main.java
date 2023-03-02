@@ -8,11 +8,18 @@ public class Main {
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         System.out.println("== 명언 앱 ==");
-        System.out.print("명령) ");
         while (true) {
+            System.out.print("명령) ");
             String input = br.readLine();
             if (input.equals("종료")) {
                 break;
+            }
+            else if(input.equals("등록")){
+                System.out.print("명언 : ");
+                String phrase = br.readLine();
+
+                System.out.print("작가 : ");
+                String writer = br.readLine();
             }
         }
     }
