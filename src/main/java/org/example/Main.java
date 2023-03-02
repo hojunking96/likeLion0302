@@ -51,9 +51,11 @@ public class Main {
             } else if (func.equals("목록")) {
                 System.out.println("번호 / 작가 / 명언");
                 System.out.println("----------------------");
-                for (int i = phrases.size(); i >= 1; i--) {
-                    Phrase phrase = phrases.get(i);
-                    System.out.println(i + " / " + phrase.getWriter() + " / " + phrase.getSentence());
+
+                List<Integer> keyList = new ArrayList<>(phrases.keySet());
+                keyList.sort((s1, s2) -> s2 - s1);
+                for (int key : keyList) {
+                    System.out.println(key + " / " + phrases.get(key).getWriter() + " / " + phrases.get(key).getSentence());
                 }
             } else if (func.substring(0, 2).equals("삭제")) {
                 int deleteID = Integer.parseInt(func.substring(6));
@@ -63,9 +65,17 @@ public class Main {
                 } else {
                     System.out.println(deleteID + "번 명언은 존재하지 않습니다.");
                 }
+            } else if (func.substring(0, 2).equals("수정")) {
+                int modifyID = Integer.parseInt(func.substring(6));
+                System.out.println("명언(기존) : " + phrases.get(modifyID).getSentence());
+                System.out.print("명언 : ");
+                String sentence = br.readLine();
+                System.out.println("작가(기존) : " + phrases.get(modifyID).getWriter());
+                System.out.print("작가 : ");
+                String writer = br.readLine();
+                phrases.put(modifyID, new Phrase(writer, sentence));
             }
         }
-
 
     }
 }
