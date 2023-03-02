@@ -20,8 +20,7 @@ public class Main {
 
                 System.out.print("작가 : ");
                 String writer = br.readLine();
-                phraseCnt++;
-                System.out.println(phraseCnt + "번 명언이 등록되었습니다.");
+                System.out.println(++phraseCnt + "번 명언이 등록되었습니다.");
             }
         }
     }
