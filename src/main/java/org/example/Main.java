@@ -1,15 +1,13 @@
 package org.example;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 public class Main {
-    static class Phrase {
+    static class Phrase implements Serializable{
         private String writer;
         private String sentence;
 
@@ -29,7 +27,15 @@ public class Main {
 
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        Map<Integer, Phrase> phrases = new HashMap<>();
+        Map<Integer, Phrase> phrases;
+
+        try {
+            FileInputStream fileInputStream = new FileInputStream("1.json");
+            ObjectInputStream is = new ObjectInputStream(fileInputStream);
+            phrases = (Map<Integer, Phrase>) is.readObject();
+        } catch (Exception e) {
+            phrases = new HashMap<>();
+        }
 
         System.out.println("== 명언 앱 ==");
         int phraseCnt = 0;
@@ -76,6 +82,9 @@ public class Main {
                 phrases.put(modifyID, new Phrase(writer, sentence));
             }
         }
-
+        FileOutputStream fileOutputStream = new FileOutputStream("1.json");
+        ObjectOutputStream os = new ObjectOutputStream(fileOutputStream);
+        os.writeObject(phrases);
+        os.close();
     }
 }
