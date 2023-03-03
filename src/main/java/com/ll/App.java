@@ -1,7 +1,7 @@
-package org.example;
+package com.ll;
 
-import org.example.phrase.controller.PhraseController;
-import org.example.system.controller.SystemController;
+import com.ll.phrase.controller.PhraseController;
+import com.ll.system.controller.SystemController;
 
 import java.io.IOException;
 

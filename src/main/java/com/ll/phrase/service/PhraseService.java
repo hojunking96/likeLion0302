@@ -1,7 +1,7 @@
-package org.example.phrase.service;
+package com.ll.phrase.service;
 
-import org.example.phrase.entity.Phrase;
-import org.example.phrase.repository.PhraseRepository;
+import com.ll.phrase.entity.Phrase;
+import com.ll.phrase.repository.PhraseRepository;
 
 import java.util.List;
 

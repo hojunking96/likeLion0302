@@ -1,13 +1,12 @@
-package org.example.phrase.controller;
+package com.ll.phrase.controller;
 
 
-import org.example.Container;
-import org.example.Rq;
-import org.example.phrase.entity.Phrase;
-import org.example.phrase.service.PhraseService;
+import com.ll.Container;
+import com.ll.Rq;
+import com.ll.phrase.entity.Phrase;
+import com.ll.phrase.service.PhraseService;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
 public class PhraseController {

@@ -1,4 +1,4 @@
-package org.example.phrase.entity;
+package com.ll.phrase.entity;
 
 public class Phrase {
     private long id;

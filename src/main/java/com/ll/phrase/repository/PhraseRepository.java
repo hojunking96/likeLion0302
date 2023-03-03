@@ -1,6 +1,6 @@
-package org.example.phrase.repository;
+package com.ll.phrase.repository;
 
-import org.example.phrase.entity.Phrase;
+import com.ll.phrase.entity.Phrase;
 
 import java.util.ArrayList;
 import java.util.List;
