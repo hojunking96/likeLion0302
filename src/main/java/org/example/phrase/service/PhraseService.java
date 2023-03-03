@@ -1,52 +1,36 @@
 package org.example.phrase.service;
 
 import org.example.phrase.entity.Phrase;
+import org.example.phrase.repository.PhraseRepository;
 
-import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
 public class PhraseService {
 
-
-    private long lastPhraseId;
-    private final List<Phrase> phrases;
+    private final PhraseRepository phraseRepository;
 
     public PhraseService() {
-        lastPhraseId = 0;
-        phrases = new ArrayList<>();
+        phraseRepository = new PhraseRepository();
     }
 
     public Phrase findById(long id) {
-        for (Phrase phrase : phrases) {
-            if (phrase.getId() == id) {
-                return phrase;
-            }
-        }
-        return null;
+        return phraseRepository.findById(id);
     }
 
     public List<Phrase> findAll() {
-        return phrases;
+        return phraseRepository.findAll();
     }
 
-    public long write(String content, String authorName) throws IOException {
-        long id = lastPhraseId + 1;
-
-        Phrase phrase = new Phrase(id, content, authorName);
-        phrases.add(phrase);
-
-        lastPhraseId = id; // 증가
-        return id;
+    public long write(String content, String authorName) {
+        return phraseRepository.write(content, authorName);
     }
 
 
     public void remove(Phrase phrase) {
-        phrases.remove(phrase);
+        phraseRepository.remove(phrase);
     }
 
-    public void modify(Phrase phrase, String content, String authorName) throws IOException {
-        phrase.setContent(content);
-        phrase.setAuthorName(authorName);
+    public void modify(Phrase phrase, String content, String authorName) {
+        phraseRepository.modify(phrase, content, authorName);
     }
 }
