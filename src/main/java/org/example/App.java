@@ -12,6 +12,7 @@ public class App {
 
         SystemController systemController = new SystemController();
         PhraseController phraseController = new PhraseController();
+
         while (true) {
             System.out.print("명령) ");
             String command = Container.getBufferedReader().readLine();

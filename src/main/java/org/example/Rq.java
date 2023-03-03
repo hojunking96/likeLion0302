@@ -8,6 +8,7 @@ public class Rq {
     private Map<String, String> params;
 
     public Rq(String command) {
+        //limit 인자로 배열의 최대 개수 설정(2라고 설정하면 처음나온 ?에서 양쪽으로 나눠짐)
         String[] commandBits = command.split("\\?", 2);
         function = commandBits[0];
 
@@ -38,7 +39,7 @@ public class Rq {
     public String getParam(String name){
         return params.get(name);
     }
-    public int getIntParam(String name, int defaultValue){
+    public long getLongParam(String name, long defaultValue){
         try{
             return Integer.parseInt(getParam(name));
         }catch(NumberFormatException e){
