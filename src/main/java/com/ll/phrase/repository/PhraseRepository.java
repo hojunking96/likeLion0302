@@ -1,50 +1,39 @@
 package com.ll.phrase.repository;
 
 import com.ll.phrase.entity.Phrase;
+import com.ll.phrase.table.PhraseTable;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class PhraseRepository {
 
-    private long lastPhraseId;
-    private final List<Phrase> phrases;
+    private final PhraseTable phraseTable;
 
     public PhraseRepository() {
-        lastPhraseId = 0;
-        phrases = new ArrayList<>();
+        phraseTable = new PhraseTable();
     }
 
     public List<Phrase> findAll() {
-        return phrases;
+        return phraseTable.findAll();
     }
 
     public Phrase findById(long id) {
-        for (Phrase phrase : phrases) {
-            if (phrase.getId() == id) {
-                return phrase;
-            }
-        }
-        return null;
+        return phraseTable.findById(id);
     }
 
     public long write(String content, String authorName) {
 
-        long id = lastPhraseId + 1;
+        long id = phraseTable.getLastId() + 1;
 
         Phrase phrase = new Phrase(id, content, authorName);
-        phrases.add(phrase);
-
-        lastPhraseId = id; // 증가
-        return id;
+        return phraseTable.save(phrase);
     }
 
     public void remove(Phrase phrase) {
-        phrases.remove(phrase);
+        phraseTable.remove(phrase);
     }
 
     public void modify(Phrase phrase, String content, String authorName) {
-        phrase.setContent(content);
-        phrase.setAuthorName(authorName);
+        phraseTable.modify(phrase, content, authorName);
     }
 }
